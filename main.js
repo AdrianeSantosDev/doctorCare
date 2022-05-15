@@ -14,8 +14,14 @@ function closeMenu() {
     document.body.classList.remove('menu-expanded');
 }
 
-function onCLick() {
-    alert('Você vai ser redirecionado!');
+function goTo() {
+    window.location.replace(
+        'https://api.whatsapp.com/send?phone=5511951659284&text=Ol%C3%A1%2C%20quero%20marcar%20uma%20consulta.'
+    );
+}
+
+function goToTop() {
+    window.location.replace('/#home');
 }
 
 ScrollReveal({

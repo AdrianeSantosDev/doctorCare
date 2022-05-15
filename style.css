@@ -7,17 +7,20 @@
 }
 
 :root {
-    --primary-color: hsl(
-        170,
-        100%,
-        26%
-    ); /* Criar variavel dentro de root vale para a página toda
-                                                para usar: var( --variavel-- )*/
+    /* --primary-color: hsl(170, 100%, 26%); */
+    --primary-color: hsl(240, 100%, 26%);
+    /* 
+        Criar variavel dentro de root vale
+    para a página toda para usar: var( --variavel-- )
+    */
     --secondary-color: hsl(210, 9%, 31%);
     --headline: hsl(210, 11%, 15%);
     --brand-beige: hsl(39, 100%, 97%);
-    --brand-light: hsl(148, 23%, 89%);
     --bg-light: hsl(180, 14%, 97%);
+
+    --brand-light: hsl(220, 45%, 81%);
+    /* --brand-light: hsl(148, 23%, 85%); */
+
     --nav-height: 7.2rem;
     font-size: 62.5%; /* 1rem === 10px */
 }
@@ -53,6 +56,19 @@ img {
 
 ul {
     list-style: none;
+}
+
+button,
+a {
+    cursor: pointer;
+    border: 0;
+    background: none;
+    border: none;
+}
+
+section .content button:hover {
+    transition: filter 200ms;
+    filter: grayscale(30%);
 }
 
 section {
@@ -111,6 +127,10 @@ nav.scroll {
     background: var(--primary-color);
 }
 
+nav .open-menu path {
+    stroke: var(--primary-color);
+}
+
 nav.scroll .logo path {
     fill: white;
 }
@@ -119,10 +139,8 @@ nav.scroll button path {
     stroke: white;
 }
 
-nav button {
-    background: none;
-    border: none;
-    cursor: pointer;
+nav .logo path:nth-child(n + 7):nth-child(-n + 10) {
+    fill: var(--primary-color);
 }
 
 /* HOME */
@@ -152,20 +170,20 @@ nav button {
 }
 
 #home button {
-    background-color: var(--primary-color);
-
+    background: var(--primary-color);
     border: none;
     border-radius: 4rem;
 
     margin-bottom: 6rem;
 
-    height: 6.2rem;
+    height: 5.2rem;
     width: 26.3rem;
 
     color: white;
     font-size: 1.4rem;
-    font-weight: 700;
+    font-weight: 400;
     text-transform: uppercase;
+    line-height: 1.8rem;
 
     display: flex;
     align-items: center;
@@ -289,6 +307,13 @@ body.menu-expanded .menu {
     margin-bottom: 8rem;
 }
 
+.menu .button:hover {
+    color: white;
+    background: var(--primary-color);
+    filter: brightness(120%);
+    transition: filter, background 20ms;
+}
+
 .social-links {
     display: flex;
     gap: 3.2rem;
@@ -374,12 +399,12 @@ body.menu-expanded button path {
 
     margin-bottom: 6rem;
 
-    height: 6.2rem;
+    height: 5.2rem;
     width: 26.3rem;
 
     color: white;
     font-size: 1.4rem;
-    font-weight: 700;
+    font-weight: 400;
     text-transform: uppercase;
 
     display: flex;
@@ -407,4 +432,57 @@ body.menu-expanded button path {
 #contacts .contact {
     line-height: 150%;
     color: var(--secondary-color);
+}
+
+/* FOOTER */
+#footer {
+    background: var(--primary-color);
+    line-height: 2.1rem;
+    color: var(--brand-beige);
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+#footer {
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+#footer header {
+    margin-bottom: 2.4rem;
+}
+
+#footer .content h4 {
+    font-weight: 400;
+}
+
+#footer .content h4:nth-child(2) {
+    margin-top: 1.2rem;
+    margin-bottom: 3.2rem;
+}
+
+#footer .social-links {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+/* UP-BUTTON */
+.up-button {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 1.5%;
+    bottom: 1%;
+    background: var(--primary-color);
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
 }
