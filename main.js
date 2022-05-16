@@ -1,8 +1,24 @@
+window.addEventListener('scroll', onScroll);
+
+onScroll();
 function onScroll() {
+    showNavOnScroll();
+    shwoBackToTopButtonOnScroll();
+}
+
+function showNavOnScroll() {
     if (!scrollY) {
         navigation.classList.remove('scroll');
     } else {
         navigation.classList.add('scroll');
+    }
+}
+
+function shwoBackToTopButtonOnScroll() {
+    if (scrollY >= 644) {
+        backToTopButton.classList.add('show');
+    } else {
+        backToTopButton.classList.remove('show');
     }
 }
 
@@ -12,16 +28,6 @@ function openMenu() {
 
 function closeMenu() {
     document.body.classList.remove('menu-expanded');
-}
-
-function goTo() {
-    window.location.replace(
-        'https://api.whatsapp.com/send?phone=5511951659284&text=Ol%C3%A1%2C%20quero%20marcar%20uma%20consulta.'
-    );
-}
-
-function goToTop() {
-    window.location.replace('/#home');
 }
 
 ScrollReveal({
