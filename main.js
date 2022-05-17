@@ -3,7 +3,32 @@ window.addEventListener('scroll', onScroll);
 onScroll();
 function onScroll() {
     showNavOnScroll();
-    shwoBackToTopButtonOnScroll();
+    showBackToTopButtonOnScroll();
+
+    activateMenuAtCurrentSection(home);
+    activateMenuAtCurrentSection(services);
+    activateMenuAtCurrentSection(about);
+    activateMenuAtCurrentSection(contact);
+}
+
+function activateMenuAtCurrentSection(section) {
+    const targetLine = scrollY + innerHeight / 2;
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.offsetHeight;
+    const sectionTopReachOrPassedTargetline = targetLine >= sectionTop;
+    const sectionEndsAt = sectionTop + sectionHeight;
+    const sectionEndPassedTargetLine = sectionEndsAt <= targetLine;
+    const sectionBoundaries =
+        sectionTopReachOrPassedTargetline && !sectionEndPassedTargetLine;
+
+    const sectionId = section.getAttribute('id');
+    const elementName = document.querySelector(`.menu a[href*=${sectionId}]`);
+
+    elementName.classList.remove('active');
+
+    if (sectionBoundaries) {
+        elementName.classList.add('active');
+    }
 }
 
 function showNavOnScroll() {
@@ -14,8 +39,8 @@ function showNavOnScroll() {
     }
 }
 
-function shwoBackToTopButtonOnScroll() {
-    if (scrollY >= 644) {
+function showBackToTopButtonOnScroll() {
+    if (scrollY >= 500) {
         backToTopButton.classList.add('show');
     } else {
         backToTopButton.classList.remove('show');
@@ -35,5 +60,5 @@ ScrollReveal({
     distance: '30px',
     duration: 700
 }).reveal(
-    '#home, #home img, #home .stats, #services, #services header, #services .card, #about, #about header, #about .content, #contacts, #contacts header, #contacts .content'
+    '#home, #home img, #home .stats, #services, #services header, #services .card, #about, #about header, #about .content, #contact, #contact header, #contact .col-a, #contact .col-b'
 );
